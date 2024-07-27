@@ -16,6 +16,12 @@ class User(AbstractUser):
         verbose_name='Пароль',
         help_text='Укажите пароль'
     )
+    avatar = models.ImageField(
+        upload_to='users/',
+        verbose_name='Фото',
+        help_text='Загрузите фото пользователя',
+        **NULLABLE
+    )
     token = models.CharField(
         max_length=100,
         verbose_name='Токен',
