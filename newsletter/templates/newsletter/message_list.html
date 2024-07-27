@@ -1,0 +1,26 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        {% for object in object_list %}
+        <div class="col-4 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ object }}</h4>
+                    <p class="card-text">
+                        {{ object.body|slice:100 }}
+                    </p>
+                    <a href="{% url 'newsletter:message-detail' object.pk %}"
+                       class="btn btn-outline-primary">Посмотреть</a>
+                    <a href="{% url 'newsletter:message-update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
+                    <a href="{% url 'newsletter:message-delete' object.pk %}" class="btn btn-outline-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div>
+            <a class="btn btn-outline-primary" href="{% url 'newsletter:message-create' %}" role="button">Назад</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

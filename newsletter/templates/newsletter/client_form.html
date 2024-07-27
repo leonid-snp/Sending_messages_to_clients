@@ -1,0 +1,26 @@
+{% extends 'newsletter/base.html' %}
+{% block content  %}
+<div class="container text-center mt-5">
+    <form method="post">
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <p>
+                        <h2>Клиент</h2></p>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-outline-success">Сохранить</button>
+                    </div>
+                    {% if not object %}
+                    <div class="card-footer">
+                        <a class="btn btn-outline-primary" href="{% url 'newsletter:client-list' %}" role="button">Посмотреть клиентов</a>
+                        <a class="btn btn-outline-primary" href="{% url 'newsletter:client-create' %}" role="button">Далее</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

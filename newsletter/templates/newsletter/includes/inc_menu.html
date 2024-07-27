@@ -1,0 +1,38 @@
+<header data-bs-theme="dark">
+    <div class="collapse text-bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4>О нас</h4>
+                    <p>
+                        Наше приложение может отправлять рассылки нашим клиентам
+                    </p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4>Меню</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'newsletter:home' %}" class="text-white">Главная</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'users:logout' %}" class="text-white">Выйти</a></li>
+                        <li><a href="{% url 'newsletter:message-create' %}" class="text-white">Создать рассылку</a></li>
+                        {% else %}
+                        <li><a href="#" class="text-white">Зарегистрироваться</a></li>
+                        <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>Рассылки</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>

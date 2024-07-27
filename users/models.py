@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from config.settings import NULLABLE
+
 
 class User(AbstractUser):
     username = None
@@ -13,6 +15,12 @@ class User(AbstractUser):
         max_length=255,
         verbose_name='Пароль',
         help_text='Укажите пароль'
+    )
+    token = models.CharField(
+        max_length=100,
+        verbose_name='Токен',
+        help_text='Укажите токен',
+        **NULLABLE
     )
 
     USERNAME_FIELD = "email"

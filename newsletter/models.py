@@ -38,6 +38,12 @@ class Client(models.Model):
         help_text='Введите номер телефона',
         **NULLABLE
     )
+    full_name = models.CharField(
+        max_length=255,
+        verbose_name='Ф.И.О.',
+        help_text='Укажите Ф.И.О.',
+        **NULLABLE
+    )
     comment = models.CharField(
         max_length=60,
         verbose_name='Комментарий',

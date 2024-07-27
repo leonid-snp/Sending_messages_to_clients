@@ -1,0 +1,17 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        <div class="col-3 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Сообщение</h4>
+                    <p class="card-text">Тема:</p>
+                    <p class="card-text"> Текст:</p>
+                    <a href="{% url 'newsletter:message-list' %}" class="btn btn-outline-primary">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
