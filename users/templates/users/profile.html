@@ -16,6 +16,8 @@
                         <div class="form-error">{{ f.errors }}</div>
                         {% endfor %}
                         <button type="submit" class="btn btn-outline-success">Сохранить</button>
+                        <hr>
+                        <p><a href="{% url 'users:password_change' %}">Изменить пароль ?</a></p>
                     </div>
                 </div>
             </div>

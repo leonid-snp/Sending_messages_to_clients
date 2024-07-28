@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.forms import ModelForm
 
 from newsletter.form import StyleFormMixin
@@ -21,3 +21,9 @@ class UserProfileForm(StyleFormMixin, ModelForm):
     class Meta:
         model = User
         fields = ('avatar', 'first_name', 'last_name')
+
+
+class UserPasswordChangeForm(StyleFormMixin, PasswordChangeForm):
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password1', 'new_password2')
