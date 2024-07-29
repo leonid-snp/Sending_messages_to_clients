@@ -1,0 +1,29 @@
+{% extends 'newsletter/base.html' %}
+{% load blog_media_tags %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        <div>
+            <a href="{% url 'blog:create' %}" class="btn btn-outline-secondary">Создать статью</a>
+        </div>
+        {% for object in object_list %}
+        <div class="col-4 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ blog.image|media_filter }}" class="img-fluid" alt="...">
+                    <h4 class="card-title">{{ object.title }}</h4>
+                    <a href="{% url 'blog:detail' object.pk %}" class="btn btn-outline-primary">Посмотреть</a>
+                    <a href="{% url 'blog:update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
+                    <a href="{% url 'blog:delete' object.pk %}" class="btn btn-outline-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row mt-5">
+            <div class="col-3 mx-auto">
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}" role="button">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

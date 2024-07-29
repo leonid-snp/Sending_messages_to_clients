@@ -1,0 +1,21 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        <div class="col-3 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Рассылка</h4>
+                    <p class="card-text">Сообщение: {{object.message}}</p>
+                    <p class="card-text"> Клиенты: {{object.clients}}</p>
+                    <p class="card-text"> Автор: {{object.author}}</p>
+                    <p class="card-text"> Дата и время: {{object.date_time}}</p>
+                    <p class="card-text"> Периодичность: {{object.periodicity}}</p>
+                    <p class="card-text"> Статус: {{object.status}}</p>
+                    <a href="{% url 'blog:newsletter-list' %}" class="btn btn-outline-primary">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

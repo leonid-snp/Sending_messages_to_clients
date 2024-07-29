@@ -16,11 +16,11 @@
                         <button type="submit" class="btn btn-outline-success">Сохранить</button>
                     </div>
                     <div class="card-footer">
-                        {% if not objects %}
+                        {% if objects %}
                         <a class="btn btn-outline-primary" href="{% url 'newsletter:client-list' %}" role="button">Посмотреть
                             клиентов</a>
                         {% endif %}
-                        <a class="btn btn-outline-primary" href="{% url 'newsletter:client-create' %}" role="button">Далее</a>
+                        <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-create' %}" role="button">Далее</a>
                     </div>
                 </div>
             </div>

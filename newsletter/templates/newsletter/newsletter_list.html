@@ -8,19 +8,19 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ object }}</h4>
                     <p class="card-text">
-                        {{ object.body|slice:100 }}
+                        {{ object.pk }}
                     </p>
-                    <a href="{% url 'newsletter:message-detail' object.pk %}"
-                       class="btn btn-outline-primary">Посмотреть</a>
-                    <a href="{% url 'newsletter:message-update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
-                    <a href="{% url 'newsletter:message-delete' object.pk %}" class="btn btn-outline-danger">Удалить</a>
+                    <a href="{% url 'newsletter:newsletter-detail' object.pk %}" class="btn btn-outline-primary">Посмотреть</a>
+                    <a href="{% url 'newsletter:newsletter-update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
+                    <a href="{% url 'newsletter:newsletter-delete' object.pk %}"
+                       class="btn btn-outline-danger">Удалить</a>
                 </div>
             </div>
         </div>
         {% endfor %}
         <div class="row mt-5">
             <div class="col-3 mx-auto">
-                 <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}" role="button">Назад</a>
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}" role="button">Назад</a>
             </div>
         </div>
     </div>

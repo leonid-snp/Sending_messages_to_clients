@@ -60,6 +60,16 @@ class Client(models.Model):
 
 
 class Newsletter(models.Model):
+    MAILING_FREQUENCY_OPTIONS = {
+        'OD': 'раз в день',
+        'OW': 'раз в неделю',
+        'OM': 'раз в месяц'
+    }
+    MAILING_STATUS_OPTIONS = {
+        'CR': 'создана',
+        'LA': 'запущена',
+        'CO': 'завершена'
+    }
     message = models.ForeignKey(
         Message,
         on_delete=models.SET_NULL,
@@ -86,15 +96,17 @@ class Newsletter(models.Model):
     )
     periodicity = models.CharField(
         max_length=60,
+        choices=MAILING_FREQUENCY_OPTIONS,
         verbose_name='Периодичность',
         help_text='Укажите периодичность',
         **NULLABLE
     )
     status = models.CharField(
         max_length=60,
+        choices=MAILING_STATUS_OPTIONS,
         verbose_name='Статус рассылки',
         help_text='Укажите статус рассылки',
-        **NULLABLE
+        default=MAILING_STATUS_OPTIONS.get('CR')
     )
 
     def __str__(self):

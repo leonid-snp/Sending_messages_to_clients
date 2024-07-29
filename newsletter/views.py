@@ -2,8 +2,8 @@ from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
 
-from newsletter.form import MessageForm, ClientForm
-from newsletter.models import Client, Message
+from newsletter.form import MessageForm, ClientForm, NewsletterForm
+from newsletter.models import Client, Message, Newsletter
 
 
 class HomeTemplateView(TemplateView):
@@ -53,8 +53,33 @@ class ClientDetailView(DetailView):
 
 class ClientDeleteView(DeleteView):
     model = Client
-    success_url = reverse_lazy('newsletter:home')
+    success_url = reverse_lazy('newsletter:client-list')
 
 
 class ClientListView(ListView):
     model = Client
+
+
+class NewsLetterCreateView(CreateView):
+    model = Newsletter
+    form_class = NewsletterForm
+    success_url = reverse_lazy('newsletter:newsletter-list')
+
+
+class NewsletterUpdateView(UpdateView):
+    model = Newsletter
+    form_class = NewsletterForm
+    success_url = reverse_lazy('newsletter:newsletter-list')
+
+
+class NewsletterDetailView(DetailView):
+    model = Newsletter
+
+
+class NewsletterDeleteView(DeleteView):
+    model = Newsletter
+    success_url = reverse_lazy('newsletter:newsletter-list')
+
+
+class NewsletterListView(ListView):
+    model = Newsletter
