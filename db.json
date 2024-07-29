@@ -117,6 +117,32 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2024-07-28T17:02:23.759Z",
+      "user": 1,
+      "content_type": 6,
+      "object_id": "9",
+      "object_repr": "leonidpetrov637@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2024-07-28T17:04:40.385Z",
+      "user": 1,
+      "content_type": 6,
+      "object_id": "10",
+      "object_repr": "leonidpetrov637@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -602,17 +628,45 @@
   },
   {
     "model": "sessions.session",
-    "pk": "dhh5xhbmryijb96vch81l4txzzu4eytl",
+    "pk": "qu3xuicb9mu8bfspv9uc5szy6dedyyii",
     "fields": {
-      "session_data": ".eJxVjDEOwyAQBP9CHSEdB8akTJ83oOOA4CQCydiVlb_HllwkzRY7s7sJT-tS_NrT7KcorsKJy28XiF-pHiA-qT6a5FaXeQryUORJu7y3mN630_07KNTLvlZgFEQcyQQ2CIDaaEYg4mRosMBG7TmgCwFy1MTWWYuZLaoxc3Ti8wXFGjdu:1sXjij:7b-TGg02EhCpSiJOh-4gzgr9TMn4eSCJXtLADZPGcbc",
-      "expire_date": "2024-08-10T15:52:33.250Z"
+      "session_data": ".eJxVjMsOwiAQRf-FtSEd3rh07zcQmAGpGkhKuzL-uzbpQrf3nHNfLMRtrWEbeQkzsTMDYKffMUV85LYTusd26xx7W5c58V3hBx382ik_L4f7d1DjqN86FodOSeOkLlYKZ4skYdQECaFY51F7IySAyUWQEhazJ-0IDE5WJi3Y-wPncDcp:1sYUCN:x5E1EPnGoPc2GP815M-g8RazL0YeOyJerxaSTIrSCgg",
+      "expire_date": "2024-08-12T17:30:15.506Z"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+      "title": "Почта России",
+      "text": "Акционерное общество «Почта России» (АО «Почта России») — российская государственная компания, оператор российской почтовой связи общего пользования.\r\n\r\nЧлен Всемирного почтового союза. Главный офис (штаб-квартира) расположен в Москве. До 1 октября 2019 года являлась федеральным государственным унитарным предприятием. Находится в ведении Минцифры России (до апреля 2013 года находилась в ведении Россвязи).\r\n\r\n28 марта 2013 года вошла в Перечень стратегических предприятий Российской Федерации под номером 558. В 2014 году компания перешла на макрорегиональную структуру — было создано 10 макрорегионов, которые объединили 82 филиала по региональному принципу. В этом же году «Почта России» перестала получать бюджетные субсидииПерейти к разделу «Дотации». В 2015 году «Почта России» вошла в список системообразующих предприятий России. Общая численность сотрудников в 2021 году составляла 313 тыс. человек.",
+      "image": "blogs/original-1jah_6XV1v5w.jpg",
+      "views_count": 0,
+      "date": "2024-07-29",
+      "date_update": "2024-07-29"
     }
   },
   {
     "model": "newsletter.message",
-    "pk": 5,
+    "pk": 6,
     "fields": {
-      "subject": "test",
+      "subject": "message_1",
+      "body": "test"
+    }
+  },
+  {
+    "model": "newsletter.message",
+    "pk": 7,
+    "fields": {
+      "subject": "message_2",
+      "body": "test"
+    }
+  },
+  {
+    "model": "newsletter.message",
+    "pk": 8,
+    "fields": {
+      "subject": "message_3",
       "body": "test"
     }
   },
@@ -627,10 +681,44 @@
     }
   },
   {
+    "model": "newsletter.client",
+    "pk": 6,
+    "fields": {
+      "email": "uset_2@test.com",
+      "phone": "+79174178125",
+      "full_name": "Ivanov Viktor Ivanovich",
+      "comment": "test"
+    }
+  },
+  {
+    "model": "newsletter.client",
+    "pk": 7,
+    "fields": {
+      "email": "uset_3@test.com",
+      "phone": "+79654658552",
+      "full_name": "Sidorov Oleg Viktorovich",
+      "comment": "test"
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 2,
+    "fields": {
+      "message": 6,
+      "author": 11,
+      "date_time": "2024-07-29T17:38:37Z",
+      "periodicity": "OD",
+      "status": "CR",
+      "clients": [
+        6
+      ]
+    }
+  },
+  {
     "model": "users.user",
     "pk": 1,
     "fields": {
-      "last_login": "2024-07-27T15:51:02.665Z",
+      "last_login": "2024-07-29T17:05:03.828Z",
       "is_superuser": true,
       "first_name": "",
       "last_name": "",
@@ -647,18 +735,18 @@
   },
   {
     "model": "users.user",
-    "pk": 9,
+    "pk": 11,
     "fields": {
-      "last_login": "2024-07-27T15:52:33.247Z",
+      "last_login": "2024-07-29T17:30:15.505Z",
       "is_superuser": false,
       "first_name": "Leonid",
       "last_name": "Petrov",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-07-27T15:52:13.521Z",
+      "date_joined": "2024-07-28T17:07:20.662Z",
       "email": "leonidpetrov637@gmail.com",
-      "password": "pbkdf2_sha256$720000$bhrUS8L7GXu73HnW8W4m0F$zUnfUviPviTng2oWtmXGJRq3FWYffGnXVzud9btVU0w=",
-      "avatar": "users/7181149979b9cc345415d3b6465b192b.jpg",
+      "password": "pbkdf2_sha256$720000$IepdnqAhNdZ174aW6lb8Yp$tnB3WD6ya4WVUmM8Adhfduma3c9/77hoZTW8LckePkg=",
+      "avatar": "users/7181149979b9cc345415d3b6465b192b_vQIjsaK.jpg",
       "token": null,
       "groups": [],
       "user_permissions": []
