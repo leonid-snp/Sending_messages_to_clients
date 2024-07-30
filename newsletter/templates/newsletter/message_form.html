@@ -16,11 +16,12 @@
                         <button type="submit" class="btn btn-outline-success">Сохранить</button>
                     </div>
                     <div class="card-footer">
-                        {% if object %}
-                        <a class="btn btn-outline-primary" href="{% url 'newsletter:message-list' %}" role="button">Посмотреть
-                            сообщения</a>
+                        {% if not object %}
+                        <a class="btn btn-outline-primary" href="{% url 'newsletter:message-list' %}"
+                           role="button">Посмотреть сообщения</a>
+                        <a class="btn btn-outline-primary" href="{% url 'newsletter:client-create' %}"
+                           role="button">Далее</a>
                         {% endif %}
-                        <a class="btn btn-outline-primary" href="{% url 'newsletter:client-create' %}" role="button">Далее</a>
                     </div>
                 </div>
             </div>

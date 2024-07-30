@@ -3,23 +3,27 @@
 <div class="container">
     <div class="row text-center mt-5">
         {% for object in object_list %}
-        <div class="col-4 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ object }}</h4>
-                    <p class="card-text">
-                        {{ object.pk }}
-                    </p>
-                    <a href="{% url 'newsletter:newsletter-detail' object.pk %}" class="btn btn-outline-primary">Посмотреть</a>
-                    <a href="{% url 'newsletter:newsletter-update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
-                    <a href="{% url 'newsletter:newsletter-delete' object.pk %}"
-                       class="btn btn-outline-danger">Удалить</a>
+        <ul class="list-group">
+            <li>
+                <div class="col-4 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ object }}</h4>
+                            <p class="card-text">
+                                {{ object.pk }}
+                            </p>
+                            <a href="{% url 'newsletter:newsletter-detail' object.pk %}"
+                               class="btn btn-outline-primary">Посмотреть</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
         {% endfor %}
         <div class="row mt-5">
             <div class="col-3 mx-auto">
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-create' %}" role="button">Добавить
+                    рассылку</a>
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}" role="button">Назад</a>
             </div>
         </div>

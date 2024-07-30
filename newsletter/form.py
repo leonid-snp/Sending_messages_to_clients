@@ -16,7 +16,7 @@ class StyleFormMixin:
 class MessageForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Message
-        fields = '__all__'
+        exclude = ('author',)
 
 
 class ClientForm(StyleFormMixin, ModelForm):
@@ -28,4 +28,4 @@ class ClientForm(StyleFormMixin, ModelForm):
 class NewsletterForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Newsletter
-        fields = '__all__'
+        exclude = ('author',)

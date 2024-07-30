@@ -14,15 +14,26 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
+                <div class="col-2">
                     <div class="card shadow-sm">
-                        <div class="card-body">
-                            <p class="card-text">какой то текст</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">просмотр</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">редактирование</button>
-                                </div>
+                        <div class="card-body text-center">
+                            <h3>Всего рассылок на сайте</h3>
+                            <div class="row text-center">
+                                <h2>{{ count_newsletter }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h3>Количество активных рассылок</h3>
+                            <div class="row text-center">
+                                {% if activ_newsletter %}
+                                <h2>{{ activ_newsletter }}</h2>
+                                {% elif not activ_newsletter %}
+                                <h2>0</h2>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

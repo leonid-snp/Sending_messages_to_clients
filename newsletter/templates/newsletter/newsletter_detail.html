@@ -2,17 +2,37 @@
 {% block content %}
 <div class="container">
     <div class="row text-center mt-5">
-        <div class="col-3 mx-auto">
+        <div class="col-4 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Рассылка</h4>
                     <p class="card-text">Сообщение: {{object.message}}</p>
                     <p class="card-text"> Клиенты: {{object.clients}}</p>
                     <p class="card-text"> Автор: {{object.author}}</p>
+
                     <p class="card-text"> Дата и время: {{object.date_time}}</p>
-                    <p class="card-text"> Периодичность: {{object.periodicity}}</p>
-                    <p class="card-text"> Статус: {{object.status}}</p>
-                    <a href="{% url 'newsletter:newsletter-list' %}" class="btn btn-outline-primary">Назад</a>
+                    {% if object.periodicity == 'OD' %}
+                    <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OD}}</p>
+                    {% elif object.periodicity == 'OW' %}
+                     <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OW}}</p>
+                    {% elif object.periodicity == 'OM' %}
+                     <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OM}}</p>
+                    {% endif %}
+
+                    {% if object.status == 'CR' %}
+                    <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.CR}}</p>
+                    {% elif object.status == 'LA' %}
+                     <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.LA}}</p>
+                    {% elif object.status == 'CO' %}
+                     <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.CO}}</p>
+                    {% endif %}
+
+                    <a href="{% url 'newsletter:newsletter-update' object.pk %}"
+                       class="btn btn-outline-warning">Редактировать</a>
+                    <a href="{% url 'newsletter:newsletter-delete' object.pk %}"
+                       class="btn btn-outline-danger">Удалить</a>
+                    <a href="{% url 'newsletter:newsletter-list' %}"
+                       class="btn btn-outline-primary">Назад</a>
                 </div>
             </div>
         </div>

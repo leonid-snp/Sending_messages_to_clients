@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <div class="row text-center mt-5">
-        <div class="col-3 mx-auto">
+        <div class="col-4 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Клиент</h4>
@@ -10,7 +10,12 @@
                     <p class="card-text"> Телефон: {{object.phone.as_international}}</p>
                     <p class="card-text"> Ф.И.О.: {{object.full_name}}</p>
                     <p class="card-text"> Комментарий: {{object.comment}}</p>
-                    <a href="{% url 'newsletter:client-list' %}" class="btn btn-outline-primary">Назад</a>
+                    <a href="{% url 'newsletter:client-update' object.pk %}"
+                       class="btn btn-outline-warning">Редактировать</a>
+                    <a href="{% url 'newsletter:client-delete' object.pk %}"
+                       class="btn btn-outline-danger">Удалить</a>
+                    <a href="{% url 'newsletter:client-list' %}"
+                       class="btn btn-outline-primary">Назад</a>
                 </div>
             </div>
         </div>

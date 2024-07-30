@@ -16,6 +16,13 @@ class Message(models.Model):
         verbose_name='Сообщение',
         help_text='Напишите сообщение'
     )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Автор',
+        help_text='Укажите автора',
+        **NULLABLE
+    )
 
     def __str__(self):
         return self.subject
@@ -80,13 +87,15 @@ class Newsletter(models.Model):
     clients = models.ManyToManyField(
         Client,
         verbose_name='Клиенты',
-        help_text='Укажите клиентов'
+        help_text='Укажите клиентов',
+        related_name='clients'
     )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         verbose_name='Пользователь',
-        help_text='Укажите пользователя'
+        help_text='Укажите пользователя',
+        **NULLABLE
     )
     date_time = models.DateTimeField(
         default=timezone.now,

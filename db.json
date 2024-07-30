@@ -1,148 +1,5 @@
 [
   {
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-      "action_time": "2024-07-26T06:37:37.336Z",
-      "user": 1,
-      "content_type": 11,
-      "object_id": "1",
-      "object_repr": "user_1@test.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-      "action_time": "2024-07-26T06:38:08.797Z",
-      "user": 1,
-      "content_type": 11,
-      "object_id": "2",
-      "object_repr": "user_1@test.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-      "action_time": "2024-07-26T08:59:29.177Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "2",
-      "object_repr": "user_2@test.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-      "action_time": "2024-07-26T08:59:34.257Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "3",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-      "action_time": "2024-07-26T09:02:19.628Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "4",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-      "action_time": "2024-07-27T15:39:55.119Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "5",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-      "action_time": "2024-07-27T15:45:05.937Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "6",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-      "action_time": "2024-07-27T15:46:43.429Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "7",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-      "action_time": "2024-07-27T15:51:09.446Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "8",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-      "action_time": "2024-07-28T17:02:23.759Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "9",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-      "action_time": "2024-07-28T17:04:40.385Z",
-      "user": 1,
-      "content_type": 6,
-      "object_id": "10",
-      "object_repr": "leonidpetrov637@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
-  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -326,72 +183,72 @@
     "model": "auth.permission",
     "pk": 21,
     "fields": {
-      "name": "Can add Пользователь",
+      "name": "Can add blog",
       "content_type": 6,
-      "codename": "add_user"
+      "codename": "add_blog"
     }
   },
   {
     "model": "auth.permission",
     "pk": 22,
     "fields": {
-      "name": "Can change Пользователь",
+      "name": "Can change blog",
       "content_type": 6,
-      "codename": "change_user"
+      "codename": "change_blog"
     }
   },
   {
     "model": "auth.permission",
     "pk": 23,
     "fields": {
-      "name": "Can delete Пользователь",
+      "name": "Can delete blog",
       "content_type": 6,
-      "codename": "delete_user"
+      "codename": "delete_blog"
     }
   },
   {
     "model": "auth.permission",
     "pk": 24,
     "fields": {
-      "name": "Can view Пользователь",
+      "name": "Can view blog",
       "content_type": 6,
-      "codename": "view_user"
+      "codename": "view_blog"
     }
   },
   {
     "model": "auth.permission",
     "pk": 25,
     "fields": {
-      "name": "Can add blog",
+      "name": "Can add Клиент",
       "content_type": 7,
-      "codename": "add_blog"
+      "codename": "add_client"
     }
   },
   {
     "model": "auth.permission",
     "pk": 26,
     "fields": {
-      "name": "Can change blog",
+      "name": "Can change Клиент",
       "content_type": 7,
-      "codename": "change_blog"
+      "codename": "change_client"
     }
   },
   {
     "model": "auth.permission",
     "pk": 27,
     "fields": {
-      "name": "Can delete blog",
+      "name": "Can delete Клиент",
       "content_type": 7,
-      "codename": "delete_blog"
+      "codename": "delete_client"
     }
   },
   {
     "model": "auth.permission",
     "pk": 28,
     "fields": {
-      "name": "Can view blog",
+      "name": "Can view Клиент",
       "content_type": 7,
-      "codename": "view_blog"
+      "codename": "view_client"
     }
   },
   {
@@ -506,36 +363,36 @@
     "model": "auth.permission",
     "pk": 41,
     "fields": {
-      "name": "Can add Клиент",
+      "name": "Can add Пользователь",
       "content_type": 11,
-      "codename": "add_client"
+      "codename": "add_user"
     }
   },
   {
     "model": "auth.permission",
     "pk": 42,
     "fields": {
-      "name": "Can change Клиент",
+      "name": "Can change Пользователь",
       "content_type": 11,
-      "codename": "change_client"
+      "codename": "change_user"
     }
   },
   {
     "model": "auth.permission",
     "pk": 43,
     "fields": {
-      "name": "Can delete Клиент",
+      "name": "Can delete Пользователь",
       "content_type": 11,
-      "codename": "delete_client"
+      "codename": "delete_user"
     }
   },
   {
     "model": "auth.permission",
     "pk": 44,
     "fields": {
-      "name": "Can view Клиент",
+      "name": "Can view Пользователь",
       "content_type": 11,
-      "codename": "view_client"
+      "codename": "view_user"
     }
   },
   {
@@ -582,16 +439,16 @@
     "model": "contenttypes.contenttype",
     "pk": 6,
     "fields": {
-      "app_label": "users",
-      "model": "user"
+      "app_label": "blog",
+      "model": "blog"
     }
   },
   {
     "model": "contenttypes.contenttype",
     "pk": 7,
     "fields": {
-      "app_label": "blog",
-      "model": "blog"
+      "app_label": "newsletter",
+      "model": "client"
     }
   },
   {
@@ -622,95 +479,100 @@
     "model": "contenttypes.contenttype",
     "pk": 11,
     "fields": {
-      "app_label": "newsletter",
-      "model": "client"
+      "app_label": "users",
+      "model": "user"
     }
   },
   {
     "model": "sessions.session",
-    "pk": "qu3xuicb9mu8bfspv9uc5szy6dedyyii",
+    "pk": "qtt7zk3t2kbadj66bvvm525s8wwqcvby",
     "fields": {
-      "session_data": ".eJxVjMsOwiAQRf-FtSEd3rh07zcQmAGpGkhKuzL-uzbpQrf3nHNfLMRtrWEbeQkzsTMDYKffMUV85LYTusd26xx7W5c58V3hBx382ik_L4f7d1DjqN86FodOSeOkLlYKZ4skYdQECaFY51F7IySAyUWQEhazJ-0IDE5WJi3Y-wPncDcp:1sYUCN:x5E1EPnGoPc2GP815M-g8RazL0YeOyJerxaSTIrSCgg",
-      "expire_date": "2024-08-12T17:30:15.506Z"
-    }
-  },
-  {
-    "model": "blog.blog",
-    "pk": 2,
-    "fields": {
-      "title": "Почта России",
-      "text": "Акционерное общество «Почта России» (АО «Почта России») — российская государственная компания, оператор российской почтовой связи общего пользования.\r\n\r\nЧлен Всемирного почтового союза. Главный офис (штаб-квартира) расположен в Москве. До 1 октября 2019 года являлась федеральным государственным унитарным предприятием. Находится в ведении Минцифры России (до апреля 2013 года находилась в ведении Россвязи).\r\n\r\n28 марта 2013 года вошла в Перечень стратегических предприятий Российской Федерации под номером 558. В 2014 году компания перешла на макрорегиональную структуру — было создано 10 макрорегионов, которые объединили 82 филиала по региональному принципу. В этом же году «Почта России» перестала получать бюджетные субсидииПерейти к разделу «Дотации». В 2015 году «Почта России» вошла в список системообразующих предприятий России. Общая численность сотрудников в 2021 году составляла 313 тыс. человек.",
-      "image": "blogs/original-1jah_6XV1v5w.jpg",
-      "views_count": 0,
-      "date": "2024-07-29",
-      "date_update": "2024-07-29"
+      "session_data": ".eJxVjEEOwiAQRe_C2hCgINSle89AZmBGqgaS0q6Md7dNutDtf-_9t4iwLiWuneY4ZXERRpx-N4T0pLqD_IB6bzK1uswTyl2RB-3y1jK9rof7d1Cgl612qCh5rQJb5cBo7x1qMFZBsMQjDxrPTDqk4JhdGHIKpAb0iJbHTRKfL9nQOAA:1sYipM:Yhpf0XPBqfpih3N8YBSS0CGi-oJGS6ZmDPaETe-ZcDs",
+      "expire_date": "2024-08-13T09:07:28.271Z"
     }
   },
   {
     "model": "newsletter.message",
-    "pk": 6,
+    "pk": 1,
     "fields": {
       "subject": "message_1",
-      "body": "test"
+      "body": "test",
+      "author": 2
     }
   },
   {
     "model": "newsletter.message",
-    "pk": 7,
+    "pk": 2,
     "fields": {
       "subject": "message_2",
-      "body": "test"
+      "body": "test",
+      "author": 2
     }
   },
   {
     "model": "newsletter.message",
-    "pk": 8,
+    "pk": 3,
     "fields": {
       "subject": "message_3",
-      "body": "test"
+      "body": "test",
+      "author": 2
     }
   },
   {
     "model": "newsletter.client",
-    "pk": 5,
+    "pk": 1,
     "fields": {
       "email": "user_1@test.com",
-      "phone": "+79393094217",
+      "phone": "+79373094525",
       "full_name": "Petrov Leonid Pavlovich",
       "comment": "test"
     }
   },
   {
     "model": "newsletter.client",
-    "pk": 6,
+    "pk": 2,
     "fields": {
-      "email": "uset_2@test.com",
-      "phone": "+79174178125",
-      "full_name": "Ivanov Viktor Ivanovich",
-      "comment": "test"
-    }
-  },
-  {
-    "model": "newsletter.client",
-    "pk": 7,
-    "fields": {
-      "email": "uset_3@test.com",
+      "email": "user_2@test.com",
       "phone": "+79654658552",
       "full_name": "Sidorov Oleg Viktorovich",
       "comment": "test"
     }
   },
   {
-    "model": "newsletter.newsletter",
-    "pk": 2,
+    "model": "newsletter.client",
+    "pk": 3,
     "fields": {
-      "message": 6,
-      "author": 11,
-      "date_time": "2024-07-29T17:38:37Z",
+      "email": "user_3@test.com",
+      "phone": "+79174178125",
+      "full_name": "Ivanov Viktor Ivanovich",
+      "comment": "test"
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 1,
+    "fields": {
+      "message": 1,
+      "author": 2,
+      "date_time": "2024-07-30T09:14:00Z",
       "periodicity": "OD",
       "status": "CR",
       "clients": [
-        6
+        1
+      ]
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 2,
+    "fields": {
+      "message": 2,
+      "author": 2,
+      "date_time": "2024-07-30T11:18:24Z",
+      "periodicity": "OW",
+      "status": "CR",
+      "clients": [
+        2
       ]
     }
   },
@@ -718,15 +580,15 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
-      "last_login": "2024-07-29T17:05:03.828Z",
+      "last_login": "2024-07-30T09:07:01.489Z",
       "is_superuser": true,
       "first_name": "",
       "last_name": "",
       "is_staff": true,
       "is_active": true,
-      "date_joined": "2024-07-25T07:21:09.774Z",
+      "date_joined": "2024-07-30T09:06:46.796Z",
       "email": "admin@admin.com",
-      "password": "pbkdf2_sha256$720000$LlTMuwemR2vfE2DhMuumi8$TaSl3XxwGtMJaROT3F5hTidp+vIpvoc9m9+GPTz7a3Q=",
+      "password": "pbkdf2_sha256$720000$1kNCC4G6u7Jc7MKKWO1sl5$s3F3LqzyaewcO4ZvTtj/i6V3F0eXKTb5lXpSzuyRAE0=",
       "avatar": "",
       "token": null,
       "groups": [],
@@ -735,18 +597,18 @@
   },
   {
     "model": "users.user",
-    "pk": 11,
+    "pk": 2,
     "fields": {
-      "last_login": "2024-07-29T17:30:15.505Z",
+      "last_login": "2024-07-30T09:07:28.270Z",
       "is_superuser": false,
       "first_name": "Leonid",
       "last_name": "Petrov",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-07-28T17:07:20.662Z",
+      "date_joined": "2024-07-30T09:07:20.262Z",
       "email": "leonidpetrov637@gmail.com",
-      "password": "pbkdf2_sha256$720000$IepdnqAhNdZ174aW6lb8Yp$tnB3WD6ya4WVUmM8Adhfduma3c9/77hoZTW8LckePkg=",
-      "avatar": "users/7181149979b9cc345415d3b6465b192b_vQIjsaK.jpg",
+      "password": "pbkdf2_sha256$720000$VJvsHbryE26GSZlthTrU6H$d3YBTG06by2ZdbtOBlqVMvcbg7Az1gQhFspWJ0ROjRs=",
+      "avatar": "users/7181149979b9cc345415d3b6465b192b_WLFvZjq.jpg",
       "token": null,
       "groups": [],
       "user_permissions": []
