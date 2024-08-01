@@ -7,13 +7,27 @@
             <li>
                 <div class="col-4 mt-3">
                     <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ object }}</h4>
-                            <p class="card-text">
-                                {{ object.pk }}
-                            </p>
-                            <a href="{% url 'newsletter:newsletter-detail' object.pk %}"
-                               class="btn btn-outline-primary">Посмотреть</a>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-body text-start">
+                                    <h4 class="card-title">{{ object.name }}</h4>
+                                    <a href="{% url 'newsletter:newsletter-detail' object.pk %}"
+                                       class="btn btn-outline-primary">Посмотреть</a>
+                                </div>
+                            </div>
+                            <div class="col mt-3">
+                                <h4>Статус</h4>
+                                {% if object.status == 'CR' %}
+                                <p><button type="button" class="btn btn-warning">{{object.MAILING_STATUS_OPTIONS.CR}}</button></p>
+
+                                {% elif object.status == 'LA' %}
+                                <p><button type="button" class="btn btn-success">{{object.MAILING_STATUS_OPTIONS.LA}}</button></p>
+
+                                {% elif object.status == 'CO' %}
+                                <p><button type="button" class="btn btn-danger">{{object.MAILING_STATUS_OPTIONS.CO}}</button></p>
+                                {% endif %}
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -22,9 +36,10 @@
         {% endfor %}
         <div class="row mt-5">
             <div class="col-3 mx-auto">
-                <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-create' %}" role="button">Добавить
-                    рассылку</a>
-                <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}" role="button">Назад</a>
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-create' %}"
+                   role="button">Добавить рассылку</a>
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}"
+                   role="button">Назад</a>
             </div>
         </div>
     </div>

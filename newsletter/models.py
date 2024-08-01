@@ -40,12 +40,14 @@ class Client(models.Model):
         help_text='Укажите электронную почту'
     )
     phone = PhoneNumberField(
+        unique=True,
         region='RU',
         verbose_name='Номер телефона',
         help_text='Введите номер телефона',
         **NULLABLE
     )
     full_name = models.CharField(
+        unique=True,
         max_length=255,
         verbose_name='Ф.И.О.',
         help_text='Укажите Ф.И.О.',
@@ -55,6 +57,13 @@ class Client(models.Model):
         max_length=60,
         verbose_name='Комментарий',
         help_text='Введите комментарий',
+        **NULLABLE
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь',
+        help_text='Укажите пользователя',
         **NULLABLE
     )
 
@@ -77,6 +86,11 @@ class Newsletter(models.Model):
         'LA': 'запущена',
         'CO': 'завершена'
     }
+    name = models.CharField(
+        max_length=20,
+        verbose_name='Название рассылки',
+        help_text='Название рассылки',
+    )
     message = models.ForeignKey(
         Message,
         on_delete=models.SET_NULL,

@@ -22,10 +22,24 @@ class MessageForm(StyleFormMixin, ModelForm):
 class ClientForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Client
-        fields = '__all__'
+        exclude = ('author',)
 
 
-class NewsletterForm(StyleFormMixin, ModelForm):
+class CreateNewsletterForm(StyleFormMixin, ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.fields['clients'].queryset = Client.objects.filter(author=user)
+        self.fields['message'].queryset = Message.objects.filter(author=user)
+
+    class Meta:
+        model = Newsletter
+        exclude = ('author', 'status')
+
+
+class UpdateNewsletterForm(CreateNewsletterForm):
+
     class Meta:
         model = Newsletter
         exclude = ('author',)
