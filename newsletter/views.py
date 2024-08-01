@@ -124,10 +124,11 @@ class NewsletterDetailView(DetailView):
     model = Newsletter
     extra_context = {'title': 'Просмотр рассылки'}
 
-    def get_contex_data(self,**kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['clients'] = self.object.clients.all() #Получаем всех клиентов для текущей рассылки
+        context['clients'] = self.object.clients.all()
         return context
+
 
 class NewsletterDeleteView(DeleteView):
     model = Newsletter
