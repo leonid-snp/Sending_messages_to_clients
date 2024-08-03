@@ -132,7 +132,7 @@ class Newsletter(models.Model):
         choices=MAILING_STATUS_OPTIONS,
         verbose_name='Статус рассылки',
         help_text='Укажите статус рассылки',
-        default=MAILING_STATUS_OPTIONS.get('CR')
+        default='CR'
     )
 
     def __str__(self):

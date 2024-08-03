@@ -39,6 +39,18 @@ class CreateNewsletterForm(StyleFormMixin, ModelForm):
 
 
 class UpdateNewsletterForm(StyleFormMixin, ModelForm):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.fields['clients'].queryset = Client.objects.filter(author=user)
+        self.fields['message'].queryset = Message.objects.filter(author=user)
+
+    class Meta:
+        model = Newsletter
+        exclude = ('author',)
+
+
+class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')

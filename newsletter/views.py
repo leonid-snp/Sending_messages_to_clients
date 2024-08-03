@@ -6,7 +6,8 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
 
 from blog.models import Blog
-from newsletter.form import MessageForm, ClientForm, CreateNewsletterForm, UpdateNewsletterForm
+from newsletter.form import MessageForm, ClientForm, CreateNewsletterForm, UpdateModerNewsletterForm, \
+    UpdateNewsletterForm
 from newsletter.models import Client, Message, Newsletter
 
 
@@ -182,9 +183,9 @@ class NewsletterUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateVi
     def get_form_class(self):
         user = self.request.user
         if self.object.author == user:
-            return CreateNewsletterForm
-        elif user.has_perm('newsletter.change_newsletter'):
             return UpdateNewsletterForm
+        elif user.has_perm('newsletter.change_newsletter'):
+            return UpdateModerNewsletterForm
 
 
 class NewsletterDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
