@@ -17,9 +17,11 @@
                         {% endfor %}
                         <button type="submit" class="btn btn-outline-success">Сохранить</button>
                         <hr>
-                        <p><a href="{% url 'users:password_change' %}">Изменить пароль ?</a></p>
-                        {% if object %}
-                        <a href="{% url 'users:list' %}" class="btn btn-outline-primary">Посмотреть все профили</a>
+                        <a href="{% url 'users:list' %}"
+                           class="btn btn-outline-primary">Посмотреть все профили</a><br>
+                        {% if perms.users.delete_user %}
+                        <a href="{% url 'users:delete' object.pk %}"
+                           class="btn btn-outline-danger mt-3">Удалить</a>
                         {% endif %}
                     </div>
                 </div>

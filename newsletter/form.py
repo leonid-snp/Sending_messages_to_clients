@@ -38,8 +38,12 @@ class CreateNewsletterForm(StyleFormMixin, ModelForm):
         exclude = ('author', 'status')
 
 
-class UpdateNewsletterForm(CreateNewsletterForm):
+class UpdateNewsletterForm(StyleFormMixin, ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
 
     class Meta:
         model = Newsletter
-        exclude = ('author',)
+        fields = ('status',)

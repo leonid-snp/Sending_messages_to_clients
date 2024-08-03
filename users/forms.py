@@ -27,3 +27,9 @@ class UserPasswordChangeForm(StyleFormMixin, PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')
+
+
+class UserModerProfileForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = User
+        fields = ('is_active',)

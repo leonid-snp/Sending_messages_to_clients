@@ -29,10 +29,13 @@
                             <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.CO}}</p>
                             {% endif %}
 
+                            {% if perms.newsletter.view_newsletter %}
                             <a href="{% url 'newsletter:newsletter-update' object.pk %}"
                                class="btn btn-outline-warning">Редактировать</a>
+                            {% elif perms.newsletter.delete_newsletter %}
                             <a href="{% url 'newsletter:newsletter-delete' object.pk %}"
                                class="btn btn-outline-danger">Удалить</a>
+                            {% endif %}
                             <a href="{% url 'newsletter:newsletter-list' %}"
                                class="btn btn-outline-primary">Назад</a>
                         </div>

@@ -11,10 +11,12 @@
                     <p class="card-text"> Ф.И.О.: {{object.full_name}}</p>
                     <p class="card-text"> Пользователь: {{object.author}}</p>
                     <p class="card-text"> Комментарий: {{object.comment}}</p>
+                    {% if perms.newsletter.change_client and perms.newsletter.delete_client%}
                     <a href="{% url 'newsletter:client-update' object.pk %}"
                        class="btn btn-outline-warning">Редактировать</a>
                     <a href="{% url 'newsletter:client-delete' object.pk %}"
                        class="btn btn-outline-danger">Удалить</a>
+                    {% endif %}
                     <a href="{% url 'newsletter:client-list' %}"
                        class="btn btn-outline-primary">Назад</a>
                 </div>

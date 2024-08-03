@@ -1,8 +1,11 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+import random
+
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
 
+from blog.models import Blog
 from newsletter.form import MessageForm, ClientForm, CreateNewsletterForm, UpdateNewsletterForm
 from newsletter.models import Client, Message, Newsletter
 
@@ -12,28 +15,34 @@ class HomeTemplateView(TemplateView):
     extra_context = {'title': 'Главная'}
 
     def get_context_data(self, **kwargs):
+        blog = list(Blog.objects.all())
+        unique_client = Client.objects.all().distinct('email').count()
+        random_blog = set()
+        while len(random_blog) != 3:
+            random_blog.add(random.choice(blog))
         newsletter = Newsletter.objects.all()
-        clients = Client.objects.all()
         count = 0
-        unique_client = []
         activ = []
         for item in newsletter:
             count += 1
-            unique_client.append(item.clients)
             if item.status == 'запущена':
                 activ.append(item)
 
         data = {
             'count_newsletter': count,
-            'activ_newsletter': activ
+            'activ_newsletter': activ,
+            'unique_clients': unique_client,
+            'blog_articles': random_blog
         }
+
         return super().get_context_data(**data)
 
 
-class MessageCreateView(LoginRequiredMixin, CreateView):
+class MessageCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Message
     form_class = MessageForm
     success_url = reverse_lazy('newsletter:message-list')
+    permission_required = 'newsletter.add_message'
     extra_context = {'title': 'Создать сообщение'}
 
     def form_valid(self, form):
@@ -44,41 +53,48 @@ class MessageCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class MessageUpdateView(LoginRequiredMixin, UpdateView):
+class MessageUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Message
     form_class = MessageForm
+    permission_required = 'newsletter.change_message'
     extra_context = {'title': 'Редактировать сообщение'}
 
     def get_success_url(self):
         return reverse("newsletter:message-detail", args=[self.kwargs.get("pk")])
 
 
-class MessageDetailView(LoginRequiredMixin, DetailView):
+class MessageDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Message
+    permission_required = 'newsletter.view_message'
     extra_context = {'title': 'Посмотреть сообщение'}
 
 
-class MessageDeleteView(LoginRequiredMixin, DeleteView):
+class MessageDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Message
     success_url = reverse_lazy('newsletter:message-list')
+    permission_required = 'newsletter.delete_message'
     extra_context = {'title': 'Удалить сообщение'}
 
 
-class MessageListView(LoginRequiredMixin, ListView):
+class MessageListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Message
+    permission_required = 'newsletter.view_message'
     extra_context = {'title': 'Список сообщений'}
 
     def get_queryset(self, *args, **kwargs):
         user = self.request.user
         queryset = super().get_queryset(*args, **kwargs)
+        if user.has_perm('newsletter.view_message'):
+            return queryset
         queryset = queryset.filter(author=user)
         return queryset
 
 
-class ClientCreateView(LoginRequiredMixin, CreateView):
+class ClientCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Client
     form_class = ClientForm
     success_url = reverse_lazy('newsletter:client-list')
+    permission_required = 'newsletter.add_client'
     extra_context = {'title': 'Добавить клиента'}
 
     def form_valid(self, form):
@@ -89,41 +105,48 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ClientUpdateView(LoginRequiredMixin, UpdateView):
+class ClientUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Client
     form_class = ClientForm
+    permission_required = 'newsletter.change_client'
     extra_context = {'title': 'редактировать клиента'}
 
     def get_success_url(self):
         return reverse("newsletter:client-detail", args=[self.kwargs.get("pk")])
 
 
-class ClientDetailView(LoginRequiredMixin, DetailView):
+class ClientDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Client
+    permission_required = 'newsletter.view_client'
     extra_context = {'title': 'Просмотр клиента'}
 
 
-class ClientDeleteView(LoginRequiredMixin, DeleteView):
+class ClientDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Client
     success_url = reverse_lazy('newsletter:client-list')
+    permission_required = 'newsletter.delete_client'
     extra_context = {'title': 'Удаление клиента'}
 
 
-class ClientListView(LoginRequiredMixin, ListView):
+class ClientListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Client
+    permission_required = 'newsletter.view_client'
     extra_context = {'title': 'Список клиентов'}
 
     def get_queryset(self, *args, **kwargs):
         user = self.request.user
         queryset = super().get_queryset(*args, **kwargs)
+        if user.has_perm('newsletter.view_client'):
+            return queryset
         queryset = queryset.filter(author=user)
         return queryset
 
 
-class NewsLetterCreateView(LoginRequiredMixin, CreateView):
+class NewsLetterCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Newsletter
     form_class = CreateNewsletterForm
     success_url = reverse_lazy('newsletter:newsletter-list')
+    permission_required = 'newsletter.add_newsletter'
     extra_context = {'title': 'Создать рассылку'}
 
     def form_valid(self, form):
@@ -141,9 +164,9 @@ class NewsLetterCreateView(LoginRequiredMixin, CreateView):
         return kwargs
 
 
-class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
+class NewsletterUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Newsletter
-    form_class = UpdateNewsletterForm
+    permission_required = 'newsletter.change_newsletter'
     extra_context = {'title': 'Редактировать рассылку'}
 
     def get_success_url(self):
@@ -156,9 +179,17 @@ class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
         })
         return kwargs
 
+    def get_form_class(self):
+        user = self.request.user
+        if self.object.author == user:
+            return CreateNewsletterForm
+        elif user.has_perm('newsletter.change_newsletter'):
+            return UpdateNewsletterForm
 
-class NewsletterDetailView(LoginRequiredMixin, DetailView):
+
+class NewsletterDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Newsletter
+    permission_required = 'newsletter.view_newsletter'
     extra_context = {'title': 'Просмотр рассылки'}
 
     def get_context_data(self, **kwargs):
@@ -168,17 +199,22 @@ class NewsletterDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class NewsletterDeleteView(LoginRequiredMixin, DeleteView):
+class NewsletterDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Newsletter
     success_url = reverse_lazy('newsletter:newsletter-list')
+    permission_required = 'newsletter.delete_newsletter'
     extra_context = {'title': 'Удаление рассылки'}
 
 
-class NewsletterListView(LoginRequiredMixin, ListView):
+class NewsletterListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Newsletter
+    permission_required = 'newsletter.view_newsletter'
     extra_context = {'title': 'Список рассылок'}
 
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         user = self.request.user
-        self.queryset = Newsletter.objects.filter(author=user)
-        return self.queryset.all()
+        queryset = super().get_queryset(*args, **kwargs)
+        if user.has_perm('newsletter.view_newsletter'):
+            return queryset
+        queryset = Newsletter.objects.filter(author=user)
+        return queryset

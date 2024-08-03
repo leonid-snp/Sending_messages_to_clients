@@ -31,12 +31,39 @@
                             <div class="row text-center">
                                 {% if activ_newsletter %}
                                 <h2>{{ activ_newsletter }}</h2>
-                                {% elif not activ_newsletter %}
+                                {% else %}
                                 <h2>0</h2>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h3>Количество клиентов</h3>
+                            <div class="row text-center">
+                                {% if unique_clients %}
+                                <h2>{{ unique_clients }}</h2>
+                                {% else %}
+                                <h2>0</h2>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center mt-5">
+                    <h3>Статьи блога</h3>
+                    {% for article in blog_articles %}
+                    <div class="card shadow-sm mt-3">
+                        <div class="card-body text-start">
+                            <h4>{{ article.title }}</h4>
+                            {{ article.text|slice:100 }}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -12,8 +12,10 @@
                             <p class="card-text">
                                 {{ object.body|slice:100 }}
                             </p>
+                            {% if perms.newsletter.view_message %}
                             <a href="{% url 'newsletter:message-detail' object.pk %}"
                                class="btn btn-outline-primary">Посмотреть</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -22,9 +24,11 @@
         {% endfor %}
         <div class="row mt-5">
             <div class="col-3 mx-auto">
+                {% if perms.newsletter.add_message %}
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:message-create' %}"
                    role="button">Добавить сообщение</a>
-                <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}"
+                {% endif %}
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-list' %}"
                    role="button">Назад</a>
             </div>
         </div>

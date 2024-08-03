@@ -7,14 +7,23 @@
             <a href="{% url 'blog:create' %}" class="btn btn-outline-secondary">Создать статью</a>
         </div>
         {% for object in object_list %}
-        <div class="col-4 mt-3">
+        <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-body">
-                    <img src="{{ object.image|media_filter }}" class="img-fluid" alt="...">
-                    <h4 class="card-title">{{ object.title }}</h4>
-                    <a href="{% url 'blog:detail' object.pk %}" class="btn btn-outline-primary">Посмотреть</a>
-                    <a href="{% url 'blog:update' object.pk %}" class="btn btn-outline-warning">Редактировать</a>
-                    <a href="{% url 'blog:delete' object.pk %}" class="btn btn-outline-danger">Удалить</a>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{ object.image|media_filter }}" class="img-fluid" alt="...">
+                        </div>
+                        <div class="col-8 text-start">
+                            <h4 class="card-title">{{ object.title }}</h4>
+                            <p>{{ object.text|slice:100 }}</p>
+                            <div class="row">
+                                <div class="col-12 text-end">
+                                    <a href="{% url 'blog:detail' object.pk %}" class="btn btn-outline-primary">Посмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
