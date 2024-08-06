@@ -16,6 +16,9 @@ ipython = "^8.26.0"
 django-phonenumber-field = "^8.0.0"
 pillow = "^10.4.0"
 django-phonenumbers = "^1.0.1"
+celery = "^5.4.0"
+redis = "^5.0.8"
+django-celery-beat = "^2.6.0"
 
 
 [build-system]

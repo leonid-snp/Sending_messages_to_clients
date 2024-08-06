@@ -47,7 +47,7 @@ class UpdateNewsletterForm(StyleFormMixin, ModelForm):
 
     class Meta:
         model = Newsletter
-        exclude = ('author',)
+        exclude = ('author', 'date_time')
 
 
 class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):

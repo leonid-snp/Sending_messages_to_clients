@@ -116,9 +116,14 @@ class Newsletter(models.Model):
     )
     date_time = models.DateTimeField(
         default=timezone.now,
-        verbose_name='Дата и время',
-        help_text='Укажите дату и время',
+        verbose_name='Дата и время создания',
+        help_text='Укажите дату и время создания',
         **NULLABLE
+    )
+    date_start = models.DateTimeField(
+        default=timezone.now,
+        verbose_name='Дата начала рассылки',
+        help_text='Укажите дату начала рассылки'
     )
     periodicity = models.CharField(
         max_length=60,
