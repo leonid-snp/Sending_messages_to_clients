@@ -141,7 +141,7 @@ class Newsletter(models.Model):
     )
 
     def __str__(self):
-        return self.status
+        return self.name
 
     class Meta:
         verbose_name = 'Рассылка'
@@ -149,10 +149,17 @@ class Newsletter(models.Model):
 
 
 class HistoryNewsletter(models.Model):
+    newsletter = models.ForeignKey(
+        Newsletter,
+        on_delete=models.SET_NULL,
+        verbose_name='Рассылка',
+        help_text='Укажите рассылку',
+        **NULLABLE
+    )
     date_time = models.DateTimeField(
         default=timezone.now,
-        verbose_name='Дата и время',
-        help_text='Укажите дату и время'
+        verbose_name='Дата и время рассылки',
+        help_text='Укажите дату и время рассылки'
     )
     status = models.CharField(
         max_length=60,
@@ -161,7 +168,7 @@ class HistoryNewsletter(models.Model):
         **NULLABLE
     )
     response = models.CharField(
-        max_length=60,
+        max_length=255,
         verbose_name='Ответ почтового сервиса',
         help_text='Укажите ответ почтового сервиса',
         **NULLABLE

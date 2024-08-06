@@ -1,0 +1,26 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        {% for object in newsletter_history %}
+        <ul class="list-group">
+            <li>
+                <div class="col-4 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ object.newsletter }}</h4>
+                            <p>Рассылка: {{ object.newsletter }}</p>
+                            <p>Попытка отправки: {{ object.date_time }}</p>
+                            <p>Статус: {{ object.status }}</p>
+                            <p>Ответ сервера: {{ object.response }}</p>
+                            <a href="{% url 'newsletter:newsletter-list' %}"
+                               class="btn btn-outline-primary">Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

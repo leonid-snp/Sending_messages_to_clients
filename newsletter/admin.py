@@ -19,7 +19,7 @@ class ClientAdmin(ModelAdmin):
 @admin.register(Newsletter)
 class NewsletterAdmin(ModelAdmin):
     list_display = (
-        'id', 'message', 'author', 'date_time', 'periodicity', 'status'
+        'id', 'name', 'message', 'author', 'date_time', 'periodicity', 'status'
     )
     list_filter = (
         'message', 'clients', 'author', 'date_time', 'periodicity', 'status'
@@ -29,5 +29,5 @@ class NewsletterAdmin(ModelAdmin):
 
 @admin.register(HistoryNewsletter)
 class HistoryNewsletterAdmin(ModelAdmin):
-    list_display = ('id', 'date_time', 'status', 'response')
+    list_display = ('id', 'newsletter', 'date_time', 'status', 'response')
     list_filter = ('status', 'response')

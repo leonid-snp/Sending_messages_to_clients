@@ -1,6 +1,7 @@
 import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
@@ -8,7 +9,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 from blog.models import Blog
 from newsletter.form import MessageForm, ClientForm, CreateNewsletterForm, UpdateModerNewsletterForm, \
     UpdateNewsletterForm
-from newsletter.models import Client, Message, Newsletter
+from newsletter.models import Client, Message, Newsletter, HistoryNewsletter
 
 
 class HomeTemplateView(TemplateView):
@@ -21,17 +22,11 @@ class HomeTemplateView(TemplateView):
         random_blog = set()
         while len(random_blog) != 3:
             random_blog.add(random.choice(blog))
-        newsletter = Newsletter.objects.all()
-        count = 0
-        activ = []
-        for item in newsletter:
-            count += 1
-            if item.status == 'запущена':
-                activ.append(item)
-
+        activ_newsletter = Newsletter.objects.filter(status='LA').count()
+        count_newsletter = Newsletter.objects.all().count()
         data = {
-            'count_newsletter': count,
-            'activ_newsletter': activ,
+            'count_newsletter': count_newsletter,
+            'activ_newsletter': activ_newsletter,
             'unique_clients': unique_client,
             'blog_articles': random_blog
         }
@@ -219,3 +214,14 @@ class NewsletterListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
             return queryset
         queryset = Newsletter.objects.filter(author=user)
         return queryset
+
+
+def newsletter_history(request):
+    user = request.user
+    print(request.__dict__)
+    history = HistoryNewsletter.objects.filter(newsletter__author=user)
+    data = {
+        'newsletter_history': history,
+        'title': 'История рассылки'
+    }
+    return render(request, 'newsletter/newsletter_history.html', context=data)
