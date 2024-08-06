@@ -41,4 +41,3 @@ class User(AbstractUser):
         permissions = [
             ('cam_change_user', 'Can change user')
         ]
-

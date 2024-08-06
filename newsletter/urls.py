@@ -1,8 +1,8 @@
 from django.urls import path
 
 from newsletter.apps import NewsletterConfig
-from . import views
 
+from . import views
 
 app_name = NewsletterConfig.name
 

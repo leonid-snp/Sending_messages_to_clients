@@ -1,4 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import (AuthenticationForm, PasswordChangeForm,
+                                       UserCreationForm)
 from django.forms import ModelForm
 
 from newsletter.form import StyleFormMixin

@@ -1,6 +1,6 @@
 from django.forms import BooleanField, ModelForm
 
-from newsletter.models import Message, Client, Newsletter
+from newsletter.models import Client, Message, Newsletter
 
 
 class StyleFormMixin:
@@ -53,7 +53,6 @@ class UpdateNewsletterForm(StyleFormMixin, ModelForm):
 class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
 
     class Meta:

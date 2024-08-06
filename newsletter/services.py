@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from django.core.mail import send_mail
 
 from config.settings import EMAIL_HOST_USER
-from newsletter.models import Newsletter, HistoryNewsletter
+from newsletter.models import HistoryNewsletter, Newsletter
 
 
 def mailing(newsletter):
@@ -16,11 +16,11 @@ def mailing(newsletter):
             recipient_list=[client.email for client in newsletter._prefetched_objects_cache.get('clients')],
             fail_silently=False
         )
-        # HistoryNewsletter.objects.create(
-        #     newsletter=newsletter,
-        #     status='Отправлена',
-        #     response=server_response
-        # )
+        HistoryNewsletter.objects.create(
+            newsletter=newsletter,
+            status='Отправлена',
+            response=server_response
+        )
     except smtplib.SMTPException as e:
         print(str(e))
         HistoryNewsletter.objects.create(

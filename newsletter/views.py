@@ -1,15 +1,16 @@
 import random
 
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
 
 from blog.models import Blog
-from newsletter.form import MessageForm, ClientForm, CreateNewsletterForm, UpdateModerNewsletterForm, \
-    UpdateNewsletterForm
-from newsletter.models import Client, Message, Newsletter, HistoryNewsletter
+from newsletter.form import (ClientForm, CreateNewsletterForm, MessageForm,
+                             UpdateModerNewsletterForm, UpdateNewsletterForm)
+from newsletter.models import Client, HistoryNewsletter, Message, Newsletter
 
 
 class HomeTemplateView(TemplateView):
