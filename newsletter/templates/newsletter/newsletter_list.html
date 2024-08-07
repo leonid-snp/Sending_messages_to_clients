@@ -44,15 +44,14 @@
         </ul>
         {% endfor %}
         <div class="row mt-5">
-            <div class="col-6 mx-auto">
-                {% if perms.newsletter.add_newsletter %}
-                <a class="btn btn-outline-primary" href="{% url 'newsletter:message-create' %}"
-                   role="button">Добавить рассылку</a>
-                {% elif perms.newsletter.view_message and perms.newsletter.view_client %}
+            <div class="col-8 mx-auto">
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:message-list' %}"
                    role="button">Посмотреть сообщения</a>
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:client-list' %}"
                    role="button">Посмотреть клиентов</a>
+                {% if perms.newsletter.add_newsletter %}
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:message-create' %}"
+                   role="button">Добавить рассылку</a>
                 {% endif %}
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:home' %}"
                    role="button">Назад</a>

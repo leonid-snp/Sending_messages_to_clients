@@ -7,6 +7,9 @@ from users.models import User
 
 
 class Message(models.Model):
+    """
+    Модель сообщений.
+    """
     subject = models.CharField(
         max_length=60,
         verbose_name='Тема',
@@ -36,6 +39,9 @@ class Message(models.Model):
 
 
 class Client(models.Model):
+    """
+    Модель клиентов.
+    """
     email = models.EmailField(
         unique=True,
         max_length=60,
@@ -79,6 +85,9 @@ class Client(models.Model):
 
 
 class Newsletter(models.Model):
+    """
+    Модель рассылки.
+    """
     MAILING_FREQUENCY_OPTIONS = {
         'OD': 'раз в день',
         'OW': 'раз в неделю',
@@ -149,6 +158,9 @@ class Newsletter(models.Model):
 
 
 class HistoryNewsletter(models.Model):
+    """
+    Модель попытки рассылки.
+    """
     newsletter = models.ForeignKey(
         Newsletter,
         on_delete=models.SET_NULL,

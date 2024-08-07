@@ -4,6 +4,9 @@ from newsletter.models import Client, Message, Newsletter
 
 
 class StyleFormMixin:
+    """
+    Базовый класс миксин для всех форм.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -14,19 +17,27 @@ class StyleFormMixin:
 
 
 class MessageForm(StyleFormMixin, ModelForm):
+    """
+    Модель формы для сообщений.
+    """
     class Meta:
         model = Message
         exclude = ('author',)
 
 
 class ClientForm(StyleFormMixin, ModelForm):
+    """
+    Модель формы для клиентов.
+    """
     class Meta:
         model = Client
         exclude = ('author',)
 
 
 class CreateNewsletterForm(StyleFormMixin, ModelForm):
-
+    """
+    Модель формы создания рассылок.
+    """
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
@@ -35,10 +46,13 @@ class CreateNewsletterForm(StyleFormMixin, ModelForm):
 
     class Meta:
         model = Newsletter
-        exclude = ('author', 'status')
+        exclude = ('author', 'status', 'date_time')
 
 
 class UpdateNewsletterForm(StyleFormMixin, ModelForm):
+    """
+    Модель формы редактирования рассылок.
+    """
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
@@ -51,7 +65,9 @@ class UpdateNewsletterForm(StyleFormMixin, ModelForm):
 
 
 class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):
-
+    """
+    Модель формы для редактирования модератором.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

@@ -7,6 +7,9 @@ from blog.models import Blog
 
 
 class BlogCreateView(CreateView):
+    """
+    Модель создания статьи блога.
+    """
     model = Blog
     form_class = BlogCreateForm
     success_url = reverse_lazy('blog:list')
@@ -14,6 +17,9 @@ class BlogCreateView(CreateView):
 
 
 class BlogUpdateView(UpdateView):
+    """
+    Модель редактирования статьи блога.
+    """
     model = Blog
     form_class = BlogCreateForm
     success_url = reverse_lazy('blog:list')
@@ -21,16 +27,25 @@ class BlogUpdateView(UpdateView):
 
 
 class BlogDetailView(DetailView):
+    """
+    Модель детального просмотра статьи блога.
+    """
     model = Blog
     extra_context = {'title': 'Просмотр статьи'}
 
 
 class BlogDeleteView(DeleteView):
+    """
+    Модуль удаления статьи блога.
+    """
     model = Blog
     success_url = reverse_lazy('blog:list')
     extra_context = {'title': 'Удаление статьи'}
 
 
 class BlogListView(ListView):
+    """
+    Модель вывода всех статей блога.
+    """
     model = Blog
     extra_context = {'title': 'Список статей'}

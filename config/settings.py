@@ -109,8 +109,8 @@ NULLABLE = {"blank": True, "null": True}
 
 AUTH_USER_MODEL = "users.User"
 
-LOGIN_REDIRECT_URL = '/home/'
-LOGOUT_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/users/'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -138,10 +138,18 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = os.getenv('CELERY_TASK_TRACK_STARTED', False) == 'True'
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-
 CELERY_BEAT_SCHEDULE = {
     'test_func': {
         'task': 'newsletter.tasks.test',
         'schedule': timedelta(seconds=10),
     },
 }
+
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv('LOCATION'),
+        }
+    }

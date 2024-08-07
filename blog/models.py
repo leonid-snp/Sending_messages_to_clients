@@ -4,6 +4,9 @@ from config.settings import NULLABLE
 
 
 class Blog(models.Model):
+    """
+    Модель блога.
+    """
     title = models.CharField(
         max_length=60,
         verbose_name='Заголовок',
@@ -31,3 +34,10 @@ class Blog(models.Model):
     date_update = models.DateField(
         auto_now=True
     )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Блог'
+        verbose_name_plural = 'Блог'

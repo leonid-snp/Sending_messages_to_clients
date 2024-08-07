@@ -6,6 +6,9 @@ from blog.models import Blog
 
 @admin.register(Blog)
 class BlogAdmin(ModelAdmin):
+    """
+    Регистрирует модель Блога в админке.
+    """
     list_display = (
         'id', 'title', 'text', 'image', 'views_count', 'date', 'date_update'
     )

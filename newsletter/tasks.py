@@ -1,8 +1,11 @@
 from celery import shared_task
 
-from newsletter.services import test_mailing
+from newsletter.services import get_newsletter
 
 
 @shared_task()
 def test():
-    test_mailing()
+    """
+    Функция для запуска периодической задачи по расписанию.
+    """
+    get_newsletter()

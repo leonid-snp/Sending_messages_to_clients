@@ -7,7 +7,7 @@ from . import views
 app_name = NewsletterConfig.name
 
 urlpatterns = [
-    path('home/', views.HomeTemplateView.as_view(), name='home'),
+    path('', views.HomeTemplateView.as_view(), name='home'),
 
     path('message/create/', views.MessageCreateView.as_view(), name='message-create'),
     path('message/update/<int:pk>/', views.MessageUpdateView.as_view(), name='message-update'),
