@@ -1,0 +1,49 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        <div class="col mx-auto">
+            <div class="card">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h4 class="card-title">Рассылка</h4>
+                            <p class="card-text">Сообщение: {{object.message}}</p>
+                            <p class="card-text"> Клиенты: {{clients}}</p>
+                            <p class="card-text"> Автор: {{object.author}}</p>
+                            <p class="card-text"> Дата и время: {{object.date_time}}</p>
+
+                            {% if object.periodicity == 'OD' %}
+                            <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OD}}</p>
+                            {% elif object.periodicity == 'OW' %}
+                            <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OW}}</p>
+                            {% elif object.periodicity == 'OM' %}
+                            <p class="card-text"> Периодичность: {{object.MAILING_FREQUENCY_OPTIONS.OM}}</p>
+                            {% endif %}
+
+                            {% if object.status == 'CR' %}
+                            <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.CR}}</p>
+                            {% elif object.status == 'LA' %}
+                            <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.LA}}</p>
+                            {% elif object.status == 'CO' %}
+                            <p class="card-text"> Статус: {{object.MAILING_STATUS_OPTIONS.CO}}</p>
+                            {% endif %}
+
+                            {% if perms.newsletter.view_newsletter and perms.newsletter.delete_newsletter%}
+                            <a href="{% url 'newsletter:newsletter-update' object.pk %}"
+                               class="btn btn-outline-warning">Редактировать</a>
+                            <a href="{% url 'newsletter:newsletter-delete' object.pk %}"
+                               class="btn btn-outline-danger">Удалить</a>
+                            {% endif %}
+                            <a href="{% url 'newsletter:newsletter-list' %}"
+                               class="btn btn-outline-primary">Назад</a>
+                            <a href="{% url 'newsletter:newsletter-history' %}"
+                               class="btn btn-outline-primary">История рассылки</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

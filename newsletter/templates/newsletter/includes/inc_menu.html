@@ -1,0 +1,44 @@
+<header data-bs-theme="dark">
+    <div class="collapse text-bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4>О нас</h4>
+                    <p>
+                        Наше приложение может отправлять рассылки нашим клиентам
+                    </p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4>Меню</h4>
+                    <a class="btn btn-outline-secondary" href="{% url 'newsletter:home' %}"
+                       role="button">Главная</a><br>
+                    {% if user.is_authenticated or perms.newsletter.view_newsletter %}
+                    <a class="btn btn-outline-secondary" href="{% url 'newsletter:newsletter-list' %}" role="button">Посмотреть
+                        рассылки</a><br>
+                    <a class="btn btn-outline-secondary" href="{% url 'blog:list' %}" role="button">Блог</a><br>
+                    <a class="btn btn-outline-secondary" href="{% url 'users:profile' %}" role="button">Профиль</a><br>
+                    <form method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-secondary" type="submit">Выйти</button>
+                        <br>
+                    </form>
+                    {% else %}
+                    <a class="btn btn-outline-secondary" href="{% url 'users:register' %}" role="button">Зарегистрироваться</a><br>
+                    <a class="btn btn-outline-secondary" href="{% url 'users:login' %}" role="button">Войти</a><br>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>Рассылки</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
