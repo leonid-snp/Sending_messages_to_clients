@@ -1,0 +1,73 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<main>
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Сервис рассылок</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h3>Всего рассылок на сайте</h3>
+                            <div class="row text-center">
+                                <h2>{{ count_newsletter }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h3>Количество активных рассылок</h3>
+                            <div class="row text-center">
+                                {% if activ_newsletter %}
+                                <h2>{{ activ_newsletter }}</h2>
+                                {% else %}
+                                <h2>0</h2>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h3>Количество клиентов</h3>
+                            <div class="row text-center">
+                                {% if unique_clients %}
+                                <h2>{{ unique_clients }}</h2>
+                                {% else %}
+                                <h2>0</h2>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center mt-5">
+                    <h3>Статьи блога</h3>
+                    {% for article in blog_articles %}
+                    <div class="card shadow-sm mt-3">
+                        <div class="card-body text-start">
+                            <h4>{{ article.title }}</h4>
+                            {{ article.text|slice:100 }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

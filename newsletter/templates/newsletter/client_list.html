@@ -1,0 +1,37 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center mt-5">
+        {% for object in object_list %}
+        <ul class="list-group">
+            <li>
+                <div class="col-4 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ object }}</h4>
+                            <p class="card-text">
+                                {{ object.phone.as_international }}
+                            </p>
+                            {% if perms.newsletter.view_client %}
+                            <a href="{% url 'newsletter:client-detail' object.pk %}"
+                               class="btn btn-outline-primary">Посмотреть</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+        <div class="row mt-5">
+            <div class="col-3 mx-auto">
+                {% if perms.newsletter.add_client %}
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:client-create' %}"
+                   role="button">Добавить клиента</a>
+                {% endif %}
+                <a class="btn btn-outline-primary" href="{% url 'newsletter:newsletter-list' %}"
+                   role="button">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
