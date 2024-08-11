@@ -1,7 +1,6 @@
 import secrets
 
-from django.contrib.auth.mixins import (LoginRequiredMixin,
-                                        PermissionRequiredMixin)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render

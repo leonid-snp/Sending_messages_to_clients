@@ -71,6 +71,7 @@ class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
+        user.save()
         super().__init__(*args, **kwargs)
 
     class Meta:
