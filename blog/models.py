@@ -8,7 +8,7 @@ class Blog(models.Model):
     Модель блога.
     """
     title = models.CharField(
-        max_length=60,
+        max_length=100,
         verbose_name='Заголовок',
         help_text='Напишите заголовок'
     )
@@ -41,3 +41,9 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'Блог'
         verbose_name_plural = 'Блог'
+        permissions = [
+            ('can_add_blog', 'Can add blog'),
+            ('can_view_blog', 'Can view blog'),
+            ('can_change_blog', 'Can change blog'),
+            ('can_delete_blog', 'Can delete blog')
+        ]

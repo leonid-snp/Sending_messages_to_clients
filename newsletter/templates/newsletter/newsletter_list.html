@@ -49,7 +49,7 @@
                    role="button">Посмотреть сообщения</a>
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:client-list' %}"
                    role="button">Посмотреть клиентов</a>
-                {% if perms.newsletter.add_newsletter %}
+                {% if perms.newsletter.can_add_newsletter %}
                 <a class="btn btn-outline-primary" href="{% url 'newsletter:message-create' %}"
                    role="button">Добавить рассылку</a>
                 {% endif %}

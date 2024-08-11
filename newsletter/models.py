@@ -11,7 +11,7 @@ class Message(models.Model):
     Модель сообщений.
     """
     subject = models.CharField(
-        max_length=60,
+        max_length=100,
         verbose_name='Тема',
         help_text='Напишите тему сообщения'
     )
@@ -34,7 +34,10 @@ class Message(models.Model):
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
         permissions = [
-            ('can_view_message', 'Can view message')
+            ('can_add_message', 'Can add message'),
+            ('can_view_message', 'Can view message'),
+            ('can_change_message', 'Can change message'),
+            ('can_delete_message', 'Can delete message')
         ]
 
 
@@ -63,7 +66,7 @@ class Client(models.Model):
         **NULLABLE
     )
     comment = models.CharField(
-        max_length=60,
+        max_length=100,
         verbose_name='Комментарий',
         help_text='Введите комментарий',
         **NULLABLE
@@ -82,6 +85,12 @@ class Client(models.Model):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
+        permissions = [
+            ('can_add_client', 'Can add client'),
+            ('can_view_client', 'Can view client'),
+            ('can_change_client', 'Can change client'),
+            ('can_delete_client', 'Can delete client')
+        ]
 
 
 class Newsletter(models.Model):
@@ -99,7 +108,7 @@ class Newsletter(models.Model):
         'CO': 'завершена'
     }
     name = models.CharField(
-        max_length=20,
+        max_length=100,
         verbose_name='Название рассылки',
         help_text='Название рассылки',
     )
@@ -135,14 +144,14 @@ class Newsletter(models.Model):
         help_text='Укажите дату начала рассылки'
     )
     periodicity = models.CharField(
-        max_length=60,
+        max_length=100,
         choices=MAILING_FREQUENCY_OPTIONS,
         verbose_name='Периодичность',
         help_text='Укажите периодичность',
         **NULLABLE
     )
     status = models.CharField(
-        max_length=60,
+        max_length=100,
         choices=MAILING_STATUS_OPTIONS,
         verbose_name='Статус рассылки',
         help_text='Укажите статус рассылки',
@@ -155,6 +164,12 @@ class Newsletter(models.Model):
     class Meta:
         verbose_name = 'Рассылка'
         verbose_name_plural = 'Рассылки'
+        permissions = [
+            ('can_add_newsletter', 'Can add newsletter'),
+            ('can_view_newsletter', 'Can view newsletter'),
+            ('can_change_newsletter', 'Can change newsletter'),
+            ('can_delete_newsletter', 'Can delete newsletter')
+        ]
 
 
 class HistoryNewsletter(models.Model):
@@ -174,7 +189,7 @@ class HistoryNewsletter(models.Model):
         help_text='Укажите дату и время рассылки'
     )
     status = models.CharField(
-        max_length=60,
+        max_length=100,
         verbose_name='Статус рассылки',
         help_text='Укажите статус рассылки',
         **NULLABLE

@@ -8,7 +8,7 @@
                     <h4 class="card-title">Сообщение</h4>
                     <p class="card-text">Тема: {{object.subject}}</p>
                     <p class="card-text"> Текст: {{object.body}}</p>
-                    {% if perms.newsletter.change_message and perms.newsletter.delete_message %}
+                    {% if perms.newsletter.can_change_message and perms.newsletter.can_delete_message %}
                     <a href="{% url 'newsletter:message-update' object.pk %}"
                        class="btn btn-outline-warning">Редактировать</a>
                     <a href="{% url 'newsletter:message-delete' object.pk %}"

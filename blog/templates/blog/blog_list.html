@@ -3,9 +3,11 @@
 {% block content %}
 <div class="container">
     <div class="row text-center mt-5">
+        {% if perms.blog.can_add_blog %}
         <div>
             <a href="{% url 'blog:create' %}" class="btn btn-outline-secondary">Создать статью</a>
         </div>
+        {% endif %}
         {% for object in object_list %}
         <div class="col-12 mt-3">
             <div class="card">

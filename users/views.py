@@ -71,14 +71,13 @@ def show_certificate(request):
     return render(request, 'users/show_certificate.html')
 
 
-class UserProfile(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+class UserProfile(LoginRequiredMixin, UpdateView):
     """
     Класс отображения страницы профиля пользователя.
     """
     form_class = forms.UserProfileForm
     template_name = 'users/profile.html'
     success_url = reverse_lazy('users:profile')
-    permission_required = 'users.view_user'
     extra_context = {'title': 'Профиль'}
 
     def get_object(self, queryset=None):
@@ -116,7 +115,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         user = self.request.user
         if self.object.email == user.email:
             return forms.UserProfileForm
-        if user.has_perm('users.cam_change_user'):
+        if user.has_perm('users.can_change_user'):
             return forms.UserModerProfileForm
 
 
