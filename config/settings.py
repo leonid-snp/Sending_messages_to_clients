@@ -139,8 +139,8 @@ CELERY_TASK_TRACK_STARTED = os.getenv('CELERY_TASK_TRACK_STARTED', False) == 'Tr
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_BEAT_SCHEDULE = {
-    'test_func': {
-        'task': 'newsletter.tasks.test',
+    'add_task': {
+        'task': 'newsletter.tasks.add_task',
         'schedule': timedelta(seconds=10),
     },
 }
