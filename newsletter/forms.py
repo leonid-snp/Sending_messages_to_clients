@@ -68,7 +68,10 @@ class UpdateModerNewsletterForm(StyleFormMixin, ModelForm):
     """
     Модель формы для редактирования модератором.
     """
+
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        user.save()
         super().__init__(*args, **kwargs)
 
     class Meta:

@@ -12,7 +12,7 @@
                             <p class="card-text">
                                 {{ object.phone.as_international }}
                             </p>
-                            {% if perms.newsletter.view_client %}
+                            {% if perms.newsletter.can_view_client %}
                             <a href="{% url 'newsletter:client-detail' object.pk %}"
                                class="btn btn-outline-primary">Посмотреть</a>
                             {% endif %}

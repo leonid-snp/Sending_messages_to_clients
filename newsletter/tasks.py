@@ -4,7 +4,7 @@ from newsletter.services import get_newsletter
 
 
 @shared_task()
-def test():
+def add_task():
     """
     Функция для запуска периодической задачи по расписанию.
     """
