@@ -42,5 +42,6 @@ class User(AbstractUser):
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
         permissions = [
-            ('cam_change_user', 'Can change user')
+            ('can_view_user', 'Can view user'),
+            ('can_change_user', 'Can change user'),
         ]

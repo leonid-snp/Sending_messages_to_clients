@@ -18,7 +18,7 @@
                                 <div class="col-12 text-start">
                                     <div class="position-relative">
                                         <div class="position-absolute bottom-0 end-0">
-                                            {% if object.email == user.email or perms.users.cam_change_user %}
+                                            {% if object.email == user.email or perms.users.can_change_user %}
                                             <a href="{% url 'users:update' object.pk %}"
                                                class="btn btn-outline-primary">Посмотреть</a>
                                             {% endif %}

@@ -20,10 +20,12 @@
                                         Просмотры {{object.views_count}}</p>
                                 </div>
                                 <div class="col text-end">
+                                    {% if perms.blog.can_change_blog and perms.blog.can_delete_blog %}
                                     <a href="{% url 'blog:update' object.pk %}"
                                        class="btn btn-outline-warning">Редактировать</a>
                                     <a href="{% url 'blog:delete' object.pk %}"
                                        class="btn btn-outline-danger">Удалить</a>
+                                    {% endif %}
                                     <a href="{% url 'blog:list' %}"
                                        class="btn btn-outline-primary">Назад</a>
                                 </div>
