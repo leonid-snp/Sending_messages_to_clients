@@ -304,12 +304,12 @@ class NewsletterDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteVi
     extra_context = {'title': 'Удаление рассылки'}
 
 
-class NewsletterListView(LoginRequiredMixin, ListView):
+class NewsletterListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     """
     Класс отображения страницы списка рассылки.
     """
     model = Newsletter
-    # permission_required = 'newsletter.view_newsletter'
+    permission_required = 'newsletter.can_view_newsletter'
     extra_context = {'title': 'Список рассылок'}
 
     def get_queryset(self, *args, **kwargs):
