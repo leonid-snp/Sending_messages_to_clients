@@ -100,7 +100,7 @@ source venv/bin/activate
 
 ## Установите зависимости
 ```
-pip install -r requiements.txt
+pip install -r requirements.txt
 ```
 
 ## Примините миграции для создания таблиц в базе данных
