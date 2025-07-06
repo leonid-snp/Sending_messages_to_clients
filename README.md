@@ -11,7 +11,7 @@ Python, Django, PostgreSQL, Docker, Docker-compose, HTML, CSS
 
 ## Клонируйте репозиторий и перейдите в него
 ```
-git clone git@github.com:leonid-snp/Sending_messages_to_clients.git
+git clone git@github.com:leonid-snp/Sending_messages_to_clients.git &&\
 cd Sending_messages_to_clients.git/
 ```
 
@@ -25,7 +25,7 @@ docker compose up --build
 ```
 redis-cli ping
 ```
-2. Должны получить ответ `PONG` если нет то установите командой.
+2. Если ответ `PONG` то переходите на следующий шаг, если нет то установите командой.
 ```
 sudo apt install redis-server
 ```
@@ -45,7 +45,7 @@ sudo systemctl status redis-server
 ```
 sudo -u postgres psql
 ```
-2. Создайте базу данных
+2. Создайте базу данных `<name>`- имя базы данных
 ```
 create database <name>;
 ```
@@ -54,31 +54,20 @@ create database <name>;
 \q
 ```
 
-## Создайте и активируйте виртуальное окружение
-```
-python3 -m venv venv
-source venv/bin/activate
-```
-
-## Установите зависимости
-```
-pip install -r requiements.txt
-```
-
-## Примините миграции для создания таблиц в базе данных
-```
-python3 manage.py migrate
-```
-
-## Эта команда заполнит базу данных тестовыми данными
-```
-python3 manage.py loaddata db.json
-```
-
-## Для работы переименуйте файл [.env.example](.env.example) в [.env](.env)
+## Для работы переименуйте и заполните файл [.env.example](.env.example) в [.env](.env)
+1. Копирование файла
 ```
 cp .env.exampl .env
 ```
+2. Заполнить файл с помощью редактора, можно использовать `vim, nvim, nano`.
+```
+#Пример на nvim
+nvim .env
+```
+3. Функцианальные клавиши
+- После открытияя редактора клавиша `i`- режим редактирования(можно печатать)
+- Для сохранения файла нажать клавишу `ESC` и ввести команду `:wq`
+- Для выхода без сохранения нажать клавишу `ESC` и ввести команду `:q!`
 
 ## django_setting
 - SECRET_KEY= секретный ключ от приложения django
@@ -103,16 +92,37 @@ cp .env.exampl .env
 ## # redis
 - LOCATION=хост брокера редис `default=redis://127.0.0.1:6379/1`
 
+## Создайте и активируйте виртуальное окружение
+```
+python3 -m venv venv &&\
+source venv/bin/activate
+```
+
+## Установите зависимости
+```
+pip install -r requiements.txt
+```
+
+## Примините миграции для создания таблиц в базе данных
+```
+python3 manage.py migrate
+```
+
+## Эта команда заполнит базу данных тестовыми данными
+```
+python3 manage.py loaddata db.json
+```
+
+## Для запуска сервера введите команду
+```
+python manage.py runserver
+```
+
 ## Есть функционал отправки уведомлений
 - создать аккаунт на сайте https://360.yandex.ru/mail/ если еще не создан
 - в настройках https://mail.yandex.ru/?uid=1981646477#setup/client включить галочку на "С сервера imap.yandex.ru по протоколу IMAP"
 - настроить аккаунт для писем зарегистрировать пароль для почты https://id.yandex.ru/security/app-passwords и сохранить его в файл .env
 
-
-## Чтобы запустить приложение в консоли введите команду
-```
-python manage.py runserver
-```
 
 ## Перейдите по ссылке в терминале где написано 
 - Starting development server at http://127.0.0.1:8000/
