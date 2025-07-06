@@ -12,7 +12,7 @@ Python, Django, PostgreSQL, Docker, Docker-compose, HTML, CSS
 ## Клонируйте репозиторий и перейдите в него
 ```
 git clone git@github.com:leonid-snp/Sending_messages_to_clients.git &&\
-cd Sending_messages_to_clients.git/
+cd Sending_messages_to_clients/
 ```
 
 ## ▶️ Запуск
