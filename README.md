@@ -57,7 +57,7 @@ create database <name>;
 ## Для работы переименуйте и заполните файл [.env.example](.env.example) в [.env](.env)
 1. Копирование файла
 ```
-cp .env.exampl .env
+cp .env.example .env
 ```
 2. Заполнить файл с помощью редактора, можно использовать `vim, nvim, nano`.
 ```
